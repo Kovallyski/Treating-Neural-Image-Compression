@@ -1,0 +1,19 @@
+# Core deep-learning stack
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Neural image compression codecs
+compressai>=1.2.6
+
+# Metrics / differentiable image processing
+pytorch-msssim>=1.0.0
+kornia>=0.7.0
+
+# Image I/O and preprocessing
+Pillow>=10.0.0
+opencv-python>=4.8.0
+
+# Utilities used by experiment/demo scripts
+numpy>=1.24.0
+pandas>=2.0.0
+tqdm>=4.66.0
