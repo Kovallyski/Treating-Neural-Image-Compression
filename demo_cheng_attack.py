@@ -80,6 +80,7 @@ def main() -> None:
     parser.add_argument("--lr_global", type=float, default=0.025)
     parser.add_argument("--lr_local", type=float, default=0.01)
     parser.add_argument("--frequency_mask", action="store_true")
+    parser.add_argument("--frequency_threshold", type=float, default=0.075)
     args = parser.parse_args()
 
     device = torch.device(args.device)
@@ -96,6 +97,7 @@ def main() -> None:
         n_global=args.n_global,
         n_local=args.n_local,
         frequency_mask=args.frequency_mask,
+        frequency_threshold=args.frequency_threshold,
     )
 
     with torch.no_grad():
@@ -137,6 +139,8 @@ def main() -> None:
     print(f"Clean reconstruction PSNR: {clean_psnr:.2f} dB")
     print(f"Attacked reconstruction PSNR: {attacked_psnr:.2f} dB")
     print(f"Delta PSNR: {clean_psnr - attacked_psnr:.2f} dB")
+    if log["frequency_radius"]:
+        print(f"Selected frequency radius: {int(log['frequency_radius'][0])}")
     print(f"Saved outputs to: {out_dir}")
 
 
